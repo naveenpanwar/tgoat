@@ -21,7 +21,7 @@ e.g.,, on Ubuntu:
 
 ## Virtualenv wrapper config
   Add following lines to your .bashrc
-  export WORKON_HOME=$HOME/~/Envs
+  export WORKON_HOME=$HOME/Envs
   source /usr/local/bin/virtualenvwrapper.sh
 
 ## Apache Virtualhost config

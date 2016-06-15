@@ -6,6 +6,9 @@ It exposes the WSGI callable as a module-level variable named ``application``.
 For more information on this file, see
 https://docs.djangoproject.com/en/1.9/howto/deployment/wsgi/
 """
+import site
+
+site.addsitedir("/home/naveen/Envs/tgoat/lib/python3.4/site-packages")
 
 import os
 
