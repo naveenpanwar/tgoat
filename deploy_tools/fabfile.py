@@ -15,6 +15,7 @@ def deploy():
     _update_database(source_folder)
 
 def _create_directory_structure_if_necessary(site_folder):
+    run('mkdir -p %s' % (site_folder,) )
     for subfolder in ('static','source'):
         run('mkdir -p %s/%s' % (site_folder, subfolder) )
 
@@ -36,7 +37,7 @@ def _update_settings(source_folder, site_name):
             )
     sed(wsgi_path,
             'site.addsitedir("/home/naveen/Envs/tgoat/lib/python3.4/site-packages")',
-            'site.addsitedir("/home/%s/Envs/tgoat/lib/python3.4/site-packages")' % (env.user,),
+            'site.addsitedir("/home/%s/Envs/tgoat/lib/python3.5/site-packages")' % (env.user,),
             )
     secret_key_file = source_folder + '/superlists/secret_key.py'
     if not exists(secret_key_file):
