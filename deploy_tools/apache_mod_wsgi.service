@@ -1,0 +1,11 @@
+[Unit]
+Description=apache2 with mod_wsgi
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/etc/mod_wsgi-express-80/apachectl start
+ExecStop=/etc/mod_wsgi-express-80/apachectl stop
+
+[Install]
+WantedBy=multi-user.target
