@@ -35,6 +35,10 @@ def _update_settings(source_folder, site_name):
             'ALLOWED_HOSTS = +$',
             'ALLOWED_HOSTS = ["%s"]' % (site_name,)
             )
+    sed(settings_path,
+            "#'mod_wsgi.server',",
+            "'mod_wsgi.server',",
+            )
     sed(wsgi_path,
             'site.addsitedir("/home/naveen/Envs/tgoat/lib/python3.4/site-packages")',
             'site.addsitedir("/home/%s/Envs/tgoat/lib/python3.5/site-packages")' % (env.user,),
