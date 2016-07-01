@@ -35,7 +35,7 @@ e.g.,, on Ubuntu:
     --user www-data --group www-data \
     --server-root=/etc/mod_wsgi-express-80
 * Create a systemd file to start this service on startup ex. apache_mod_wsgi.service with this content
-* `
+* 
   [Unit]
   Description=apache2 with mod_wsgi
 
@@ -47,7 +47,7 @@ e.g.,, on Ubuntu:
 
   [Install]
   WantedBy=multi-user.target
-  `
+  
 * place it in /lib/systemd/system/
 * restart the server
 
