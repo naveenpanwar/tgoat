@@ -36,7 +36,7 @@ def _update_settings(source_folder, site_name):
             'ALLOWED_HOSTS = ["%s"]' % (site_name,)
             )
     sed(wsgi_path,
-            'site.addsitedir("/home/naveen/Envs/tgoat/lib/python3.4/site-packages")',
+            'site.addsitedir("/home/naveen/Envs/tgoat/lib/python3.5/site-packages")',
             'site.addsitedir("/home/%s/Envs/tgoat/lib/python3.5/site-packages")' % (env.user,),
             )
     secret_key_file = source_folder + '/superlists/secret_key.py'
