@@ -16,9 +16,8 @@
 		<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 		<script src="qunit.js"></script>
 		<script>
-			QUnit.test("smoke test", function(assert) {
-				assert.equal($(".has-error").is(':visible'), true);
-				$(".has-error").hide();
+			QUnit.test("errors should be hidden on keypress", function(assert) {
+				$("input").trigger('keypress');
 				assert.equal($(".has-error").is(':visible'), false);
 			});
 		</script>
