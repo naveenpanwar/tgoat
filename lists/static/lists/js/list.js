@@ -4,3 +4,5 @@ var error_hiding_wrapper = function() {
     $(".has-error").hide();
   });
 }
+
+error_hiding_wrapper();
