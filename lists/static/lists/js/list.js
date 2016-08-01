@@ -5,4 +5,6 @@ var error_hiding_wrapper = function() {
   });
 }
 
-error_hiding_wrapper();
+$(document).ready( function() {
+  error_hiding_wrapper();
+});

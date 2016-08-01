@@ -1,0 +1,12 @@
+[Unit]
+Description=gunicorn daemon for ventury
+After=network.target
+
+[Service]
+User=naveen
+Group=naveen
+WorkingDirectory=/home/naveen/ventury/source
+ExecStart=/home/naveen/Envs/ventury/bin/gunicorn --workers 3 --bind unix:/tmp/ventury.socket ventury.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
