@@ -41,6 +41,55 @@
 			</div>
 		</div>
 		<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+		<script src="https://login.persona.org/include.js"></script>
+		<script src="/static/accounts/js/accounts.js"></script>
 		<script src="/static/lists/js/list.js"></script>
+		<script>
+			$(document).ready( function() {
+				/*
+				var currentUser = '{{ user.email}}' || null;
+				var csrf_token = '{{ csrf_token }}';
+				console.log(currentUser);
+
+				navigator.id.watch({
+				  loggedInUser: currentUser,
+				  onlogin: function(assertion) {
+					// A user has logged in! Here you need to:
+					// 1. Send the assertion to your backend for verification and to create a session.
+					// 2. Update your UI.
+					$.ajax({ /* <-- This example uses jQuery, but you can use whatever you'd like *//*
+					  type: 'POST',
+					  url: '/accounts/login', // This is a URL on your website.
+					  data: {assertion: assertion, csrfmiddlewaretoken: csrf_token},
+					  success: function(res, status, xhr) { window.location.reload(); },
+					  error: function(xhr, status, err) {
+						navigator.id.logout();
+						console.log("Login failure: " + err);
+					  }
+					});
+				  },
+				  onlogout: function() {
+					// A user has logged out! Here you need to:
+					// Tear down the user's session by redirecting the user or making a call to your backend.
+					// Also, make sure loggedInUser will get set to null on the next page load.
+					// (That's a literal JavaScript null. Not false, 0, or undefined. null.)
+					$.ajax({
+					  type: 'POST',
+					  url: '/accounts/logout', // This is a URL on your website.
+					  success: function(res, status, xhr) { window.location.reload(); },
+					  error: function(xhr, status, err) { console.log("Logout failure: " + err); }
+					});
+				  }
+				});
+
+				var urls = {
+					login: "{% url 'accounts:login' %}",
+					logout: "{% url 'accounts:logout' %}",
+				}
+				*/
+
+				Superlists.Accounts.initialize(navigator);
+			});
+		</script>
 	</body>
 </html>
