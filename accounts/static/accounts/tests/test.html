@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<title>Javascript Tests</title>
+		<link rel="stylesheet" href="../../../../superlists/static/tests/qunit.css">
+	</head>
+	<body>
+		<div id="qunit"></div>
+		<div id="qunit-fixture">
+			<a id="id_login">Sign In</a>
+		</div>
+		<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+		<script src="../../../../superlists/static/tests/qunit.js"></script>
+		<script src="../../../../superlists/static/tests/sinon.js"></script>
+		<script src="../js/accounts.js"></script>
+		<script>
+			QUnit.module("Login Module", {
+				before: function() {
+					login_functions();
+				}
+			});
+
+			QUnit.test("initialize binds sign-in button to navigator.id.request", function( assert ) {
+				var requestWasCalled = false;
+				var mockRequestFunction = function() { requestWasCalled = true;};
+				var mockNavigator = {
+					id: {
+						request: mockRequestFunction,
+						watch: function() {},
+					}
+				};
+
+				Superlists.Accounts.initialize(mockNavigator);
+				assert.equal(requestWasCalled, false, 'check request not called before click');
+
+				$("#id_login").trigger("click");
+				assert.equal(requestWasCalled, true, 'check request was called before click');
+			});
+			
+
+			QUnit.test("initialize calls navigator.id.watch", function( assert ) {
+				var user = 'current user';
+				var token = 'csrf token';
+				var urls = {login: 'login url', logout: 'logout url'};
+
+				var mockNavigator = {
+					id: {
+						watch: sinon.mock(),
+					}
+				};
+				
+				Superlists.Accounts.initialize(mockNavigator, user, token, urls);
+
+				assert.equal( mockNavigator.id.watch.calledOnce, true, 'check watch function called' );
+			});
+			
+			QUnit.test("watch sees current user", function( assert ) {
+				var user = 'current user';
+				var token = 'csrf token';
+				var urls = {login: 'login url', logout: 'logout url'};
+
+				var mockNavigator = {
+					id: {
+						watch: sinon.mock(),
+					}
+				};
+				
+				Superlists.Accounts.initialize(mockNavigator, user, token, urls);
+				var watchCallArgs = mockNavigator.id.watch.firstCall.args[0];
+
+				assert.equal( watchCallArgs.loggedInUser, user, 'check user' );
+			});
+		</script>
+	</body>
+</html>
