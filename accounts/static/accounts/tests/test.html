@@ -95,6 +95,12 @@
 						'check post data'
 						);
 			});
+			
+			QUnit.test("onlogout is just a placeholder", function( assert ) {
+				Superlists.Accounts.initialize( mockNavigator, user, token, urls);
+				var onlogoutCallback = mockNavigator.id.watch.firstCall.args[0].onlogout;
+				assert.equal(typeof onlogoutCallback, "function", 'onlogout should be a function' );
+			});
 		</script>
 	</body>
 </html>

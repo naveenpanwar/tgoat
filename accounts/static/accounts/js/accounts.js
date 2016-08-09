@@ -11,6 +11,8 @@ var login_functions = function() {
           urls.login,
           {assertion: assertion, csrfmiddlewaretoken: token }
         );
+      },
+      onlogout: function ( ) {
       }
     });
   };
