@@ -10,7 +10,9 @@ var login_functions = function() {
         $.post(
           urls.login,
           {assertion: assertion, csrfmiddlewaretoken: token }
-        );
+        )
+        .done( function() { window.location.reload(); } )
+        .fail( function() { navigator.id.logout(); } );
       },
       onlogout: function ( ) {
       }

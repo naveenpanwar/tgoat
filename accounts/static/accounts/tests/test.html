@@ -101,6 +101,20 @@
 				var onlogoutCallback = mockNavigator.id.watch.firstCall.args[0].onlogout;
 				assert.equal(typeof onlogoutCallback, "function", 'onlogout should be a function' );
 			});
+			
+			QUnit.test("onlogin test failure should do navigater.id.logout", function( assert ) {
+				mockNavigator.id.logout = sinon.mock();
+				Superlists.Accounts.initialize( mockNavigator, user, token, urls);
+				var onloginCallback = mockNavigator.id.watch.firstCall.args[0].onlogin;
+				var server = sinon.fakeServer.create();
+				server.respondWith([403, {}, "permission denied"]);
+				onloginCallback();
+
+				assert.equal(mockNavigator.id.logout.called, false, 'should not logout yet' );
+				server.respond();
+
+				assert.equal(mockNavigator.id.logout.called, true, 'should logout now' );
+			});
 		</script>
 	</body>
 </html>
