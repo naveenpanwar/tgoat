@@ -12,7 +12,10 @@ var login_functions = function() {
           {assertion: assertion, csrfmiddlewaretoken: token }
         )
         .done( function() { window.location.reload(); } )
-        .fail( function() { navigator.id.logout(); } );
+        .fail( function() { 
+          console.log('failed to log in');
+          navigator.id.logout(); 
+        });
       },
       onlogout: function ( ) {
       }

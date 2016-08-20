@@ -51,7 +51,7 @@
 		<script src="/static/lists/js/list.js"></script>
 		<script>
 			$(document).ready( function() {
-				var user = '{{ user.email }}' | null;
+				var user = '{{ user.email }}' || null;
 				var token = '{{ csrf_token }}';
 				var urls = {
 					login: "{% url 'accounts:persona_login' %}",
