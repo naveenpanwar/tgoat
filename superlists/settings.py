@@ -24,8 +24,9 @@ SECRET_KEY = '#@=uib8rv=%ml6%cn+64@h=$=1v3@$4gjbb%ihql-$_amp=a89'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+DOMAIN = "localhost"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [DOMAIN]
 
 
 # Application definition

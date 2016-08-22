@@ -31,6 +31,7 @@ def _update_settings(source_folder, site_name):
     settings_path = source_folder + '/superlists/settings.py'
     wsgi_path = source_folder + '/superlists/wsgi.py'
     sed(settings_path, "DEBUG = True", "DEBUG = False")
+    sed(settings_path, 'DOMAIN = "localhost"', 'DOMAIN = "tgoat.com"')
     sed(settings_path,
             'ALLOWED_HOSTS = +$',
             'ALLOWED_HOSTS = ["%s"]' % (site_name,)
